@@ -11,7 +11,6 @@ public class Ticket {
     private String title;
     private String description;
     private String application_id;
-
     private String status;
 
     public Ticket() {
