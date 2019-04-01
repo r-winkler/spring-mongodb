@@ -1,6 +1,8 @@
 package com.keysoft.mongodb.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -10,16 +12,18 @@ public class Ticket {
     private String id;
     private String title;
     private String description;
+
+    @Indexed(name = "appId_index", direction = IndexDirection.ASCENDING)
     private String appId;
     private String status;
 
     public Ticket() {
     }
 
-    public Ticket(String title, String description, String appId, String status) {
+    public Ticket(String title, String description, String application_id, String status) {
         this.title = title;
         this.description = description;
-        this.appId = appId;
+        this.appId = application_id;
         this.status = status;
     }
 

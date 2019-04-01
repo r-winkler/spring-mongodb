@@ -10,7 +10,7 @@ public class Ticket {
     private String id;
     private String title;
     private String description;
-    private String application_id;
+    private String appId;
     private String status;
 
     public Ticket() {
@@ -19,7 +19,7 @@ public class Ticket {
     public Ticket(String title, String description, String application_id, String status) {
         this.title = title;
         this.description = description;
-        this.application_id = application_id;
+        this.appId = application_id;
         this.status = status;
     }
 
@@ -61,12 +61,12 @@ public class Ticket {
         this.description = description;
     }
 
-    public String getApplication_id() {
-        return application_id;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setApplication_id(String application_id) {
-        this.application_id = application_id;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class Ticket {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", application_id=" + application_id +
+                ", application_id=" + appId +
                 ", status='" + status + '\'' +
                 '}';
     }
