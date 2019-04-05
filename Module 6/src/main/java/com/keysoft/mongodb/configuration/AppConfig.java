@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.CustomConversions;
 import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
@@ -18,6 +19,8 @@ import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
+import org.springframework.session.data.mongo.JacksonMongoSessionConverter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 import java.net.UnknownHostException;
@@ -31,7 +34,6 @@ import static java.time.ZonedDateTime.ofInstant;
 
 @Configuration
 public class AppConfig extends AbstractMongoConfiguration {
-
     @Override
     public MongoClient mongoClient() {
         return new MongoClient("localhost");
@@ -43,12 +45,8 @@ public class AppConfig extends AbstractMongoConfiguration {
     }
 
     @Bean
-    public MongoTemplate getMongoTemplate() throws UnknownHostException {
-        MappingMongoConverter converter = new MappingMongoConverter(
-                new DefaultDbRefResolver(mongoDbFactory()), new MongoMappingContext());
-        converter.setCustomConversions(customConversions());
-        converter.afterPropertiesSet();
-        return new MongoTemplate(mongoDbFactory(), converter);
+    MongoTransactionManager transactionManager(MongoDbFactory dbFactory) {
+        return new MongoTransactionManager(dbFactory);
     }
 
     public @Bean
