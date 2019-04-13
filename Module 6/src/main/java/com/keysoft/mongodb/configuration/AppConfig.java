@@ -8,29 +8,14 @@ import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.convert.CustomConversions;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-import org.springframework.data.mongodb.core.convert.DbRefResolver;
-import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
-import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
-import org.springframework.session.data.mongo.JacksonMongoSessionConverter;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
-import java.net.UnknownHostException;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import static java.time.ZoneId.systemDefault;
-import static java.time.ZonedDateTime.ofInstant;
 
 @Configuration
 public class AppConfig extends AbstractMongoConfiguration {
@@ -41,7 +26,7 @@ public class AppConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "tza_mongo";
+        return "trackzilla";
     }
 
     @Bean
@@ -51,7 +36,7 @@ public class AppConfig extends AbstractMongoConfiguration {
 
     public @Bean
     MongoDbFactory mongoDbFactory()  {
-        return new SimpleMongoDbFactory(new MongoClient(), "tza_mongo");
+        return new SimpleMongoDbFactory(new MongoClient(), "trackzilla");
     }
 
      @Bean

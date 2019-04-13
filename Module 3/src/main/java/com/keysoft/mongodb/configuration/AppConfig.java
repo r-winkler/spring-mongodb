@@ -8,14 +8,14 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
 public class AppConfig {
-     @Bean
-     public MongoClient mongoClient() {
+    @Bean
+    public MongoClient mongoClient() {
         return new MongoClient("localhost");
     }
 
-     @Bean
-     public MongoTemplate mongoTemplate() {
-        return new MongoTemplate(mongoClient(), "tza_mongo");
+    @Bean
+    public MongoTemplate mongoTemplate() {
+        return new MongoTemplate(mongoClient(), "trackzilla");
     }
 
     @Bean

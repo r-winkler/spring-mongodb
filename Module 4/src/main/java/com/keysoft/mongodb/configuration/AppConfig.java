@@ -15,7 +15,7 @@ public class AppConfig {
 
      @Bean
      public MongoTemplate mongoTemplate() {
-        return new MongoTemplate(mongoClient(), "tza_mongo");
+        return new MongoTemplate(mongoClient(), "trackzilla");
     }
 
     @Bean

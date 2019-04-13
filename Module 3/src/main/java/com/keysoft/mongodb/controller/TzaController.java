@@ -123,7 +123,7 @@ public class TzaController {
 
     @RequestMapping(value = "/tickets/count", method = RequestMethod.GET)
     public Long countAllTickets() {
-        Stream<Ticket> stream = ticketRepository.findAllByCustomQueryAndStream("Closed");
+        Stream<Ticket> stream = ticketRepository.findAllByCustomQueryAndStream("Open");
         Long count = stream.count();
         stream.close();
         return count;

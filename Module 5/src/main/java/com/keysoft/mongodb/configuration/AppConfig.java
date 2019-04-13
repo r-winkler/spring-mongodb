@@ -39,7 +39,7 @@ public class AppConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "tza_mongo";
+        return "trackzilla";
     }
 
     @Bean
@@ -53,7 +53,7 @@ public class AppConfig extends AbstractMongoConfiguration {
 
     public @Bean
     MongoDbFactory mongoDbFactory()  {
-        return new SimpleMongoDbFactory(new MongoClient(), "tza_mongo");
+        return new SimpleMongoDbFactory(new MongoClient(), "trackzilla");
     }
 
      @Bean

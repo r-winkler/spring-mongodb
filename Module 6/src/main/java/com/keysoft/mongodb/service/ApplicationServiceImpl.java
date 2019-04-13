@@ -46,8 +46,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     @Transactional
     public void retireApplication(Application application) {
+        //Step 1
         mongoTemplate.remove(application);
 
+        //Step 2
         Query query = new Query();
         query.addCriteria(Criteria.where("appId").is(application.getId()));
         Update update = new Update();

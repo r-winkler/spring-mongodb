@@ -21,7 +21,9 @@ public class ReleaseServiceImpl implements ReleaseService{
 
     public List<Release> getReleaseByTicketStatus(String status) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("tickets.status").is(status)); //embedded document use tickets.status
+
+        //embedded document use tickets.status
+        query.addCriteria(Criteria.where("tickets.status").is(status));
 
         //repository is not flexible enough to do this, so using mongoTemplate
         return mongoTemplate.find(query, Release.class);

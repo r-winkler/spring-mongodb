@@ -49,7 +49,6 @@ public class ReleaseServiceImpl implements ReleaseService{
 
     @Override
     public void insert(Release release) {
-        System.out.println("Release date: " + release.getReleaseDate());
         releaseRepository.insert(release);
     }
 
